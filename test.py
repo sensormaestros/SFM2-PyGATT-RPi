@@ -2,23 +2,15 @@ from time import sleep, time
 
 import pygatt
 
-from common import SFM2_SFQT_ID, Counter, configure_adapter
+from common import SFM2_SFQT_ID, Counter, SFM2S
 
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
-SFM2S = [
-    "CA:97:13:6A:75:58",
-    "ED:CA:1C:38:44:8C",
-    "C6:04:7F:D4:EB:DF",
-    # "C6:56:4A:A4:C7:26",
-    # "C5:CF:C3:A4:D9:03",
-    # "D8:07:CF:41:77:74"
-]
+# configure_adapter('hci0', 24, 24)
+# configure_adapter('hci1', 30, 30)
 
-#configure_adapter('hci0', 24, 24)
-#configure_adapter('hci1', 30, 30)
-
-adapters = [pygatt.GATTToolBackend(hci_device='hci0') for _ in SFM2S] #+ [pygatt.GATTToolBackend(hci_device='hci1') for _ in SFM2S[3:]]
+# adapters = [pygatt.GATTToolBackend(hci_device='hci0') for _ in SFM2S[:3]] + [pygatt.GATTToolBackend(hci_device='hci1') for _ in SFM2S[3:]]
+adapters = [pygatt.GATTToolBackend(hci_device='hci0') for _ in SFM2S]
 
 
 def handle_data(counter: Counter, value):
